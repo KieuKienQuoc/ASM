@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="btn.css" />
+    <title>Document</title>
+  </head>
+  <style>
+    
+  </style>
+  <body>
+    <div id="light">
+      <div id="iconClose">&#9932;</div>
+      <video controls width="700px" id="vCard">
+        <source src="img/mercedes-amg-couple.mp4" type="video/mp4"> 
+      </video>
+    </div>
+    <div id="fade"></div>
+    <div id="overlay">
+      <table id="tbCart">
+        <tr>
+          <th>Name</th>
+          <th>image</th>
+          <th>Pirce</th>
+          <th>Qty</th>
+        </tr>
+      </table>
+    </div>
+    <div class="header">
+      <div id="items"></div>
+      <img
+        id="imgIcon"
+        src="img/cartsIcon.png"
+        alt="Cart Icon"
+        onclick="showCarts()"
+      />
+    </div>
+    <div class="prod">
+      <div class="cart">
+        <img src="img/mercedes-Benz-G.png"/>
+        <h3 class="nine">
+          Mercedes-Benz<span>G63</span><span>380000</span> USD
+        </h3>
+        <button class="button-92">Add Cart</button>
+      </div>
+      <div class="cart">
+        <img src="img/mercedes-amg-couple.png" alt="" />
+        <h3 class="nine">
+          Mercedes-Benz <span>AMG couplé</span><span>120000</span> USD
+        </h3>
+        <button class="button-92">Add Cart</button>
+      </div>
+      <div class="cart">
+        <img src="img/mercedes-AMG.png" alt="" />
+        <h3 class="nine">
+          Mercedes-Benz <span>AMG Sport</span><span>150000</span> USD
+        </h3>
+        <button class="button-92">Add Cart</button>
+      </div>
+      <div class="cart">
+        <img src="img/mercedes-glc.png" alt="" />
+
+        <h3 class="nine">
+          Mercedes-Benz <span>GLC 250</span><span>200000</span> USD
+        </h3>
+        <button class="button-92">Add Cart</button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    var iconClose = document.getElementById("iconClose")
+    var light = document.getElementById("light")
+    var fade = document.getElementById("fade")
+    var vCard = document.getElementById("vCard")
+    var imgClose = document.querySelectorAll(".cart img")
+
+    fade.addEventListener("click",close   )
+    for (let index = 0; index < imgClose.length; index++) {
+      const element = imgClose[index];
+      element.addEventListener("click",()=>{
+        vCard.src = element.src.replace("png","mp4")
+        openVideo()
+      })
+    }
+    function openVideo(){
+      light.style.display = "block"
+      fade.style.display = "block"
+      vCard.load()
+      vCard.play()
+    }
+
+    iconClose.addEventListener("click" ,close)
+    function close(){
+      light.style.display = "none"
+      fade.style.display = "none"
+      vCard.pause()
+    }
+    // đóng bằng Esc
+    window.addEventListener("keydown",closeEsc);
+    function closeEsc(event){
+      if(event.key == "Escape"){
+        close()
+      }
+    }
+  </script>
+</html>
